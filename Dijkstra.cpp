@@ -1,14 +1,26 @@
 #include <bits/stdc++.h>
+#include <windows.h>
 using namespace std;
 
 int main(void)
 {
-    int n,m, start;
-    cout<<"Ingresa la cantidad de nodos que tiene el grafo:";
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
+    cout<<"\nEste programa buscará las distancias mínimas desde un nodo "
+        <<"a los demás. Eligirá las aristas que cumplan este propósito y "
+        <<"las mostrará en la consola, de las cuales es posible construir "
+        <<"un arbol de distancias mínimas\n\n";
+
+    //n: nodos, m: aristas, d: dirigido, s: inicio, f: final
+    int n,m,d,s;
+    cout<<"Ingrese 1 si el grafo es dirigido o 0 si no es dirigido: ";
+    cin>>d;
+    cout<<"Ingrese la cantidad de nodos que tiene el grafo: ";
     cin>>n;
-    cout<<"Ingresa la cantidad de aristas que hay en el grafo:";
+    cout<<"Ingrese la cantidad de aristas que hay en el grafo: ";
     cin>>m;
-    cout<<"Ingrese el inicio y destino de cada arista, seguido por el peso (ejemplo: 1 4 2):\n";
+    cout<<"Ingrese los nodos que estén conectados por una arista (ej. 1 4):\n";
 
     vector<pair<int,long long>> adj[n+1]; 
     for (long long i = 0; i<m; i++){
@@ -18,12 +30,12 @@ int main(void)
     }
     
     cout<<"Ingresa el nodo inicial:";
-    cin>>start;
+    cin>>s;
 
     vector<long long> dis(n+1, -1);
     set<array<long long, 3>> dijkstra;
     vector<array<long long, 3>> edgs;
-    dijkstra.insert({0,start,start});
+    dijkstra.insert({0,s,s});
 
     while (!dijkstra.empty()){
         auto x = *dijkstra.begin();
