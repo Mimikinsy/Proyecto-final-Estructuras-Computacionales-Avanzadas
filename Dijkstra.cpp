@@ -1,3 +1,25 @@
+/*
+    ALGORITMO DE CAMINOS MÁS CORTOS - Dijkstra
+    
+    ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
+    Profesor Miguel Angel Meza de Luna
+
+    Inregrantes:
+        Anabel Romo Esparza
+        Ariadna Vargas Medina
+        Gaddiel Mohamed Pedroza Martínez
+        Stephanie Paola Pérez Ramírez
+
+    Propósito general:
+        Determina las distancias mínimas desde un nodo origen hacia todos los demás nodos del grafo.
+        Recopila las aristas que contribuyen a dichas distancias, luego, las muestra en la consola,
+        permitiendo reconstruir un árbol de caminos de costo mínimo.
+
+    Complejidad del algoritmo:
+        Utilizando una cola de prioridad y listas de adyacencia, Dijkstra opera en O((N + M) log N) sobre
+        grafos con pesos no negativos.
+*/
+
 #include <bits/stdc++.h>
 #include <windows.h>
 using namespace std;
@@ -7,54 +29,59 @@ int main(void)
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    cout<<"\nEste programa buscará las distancias mínimas desde un nodo "
+    cout<<"\nEste programa buscará las distancias / pesos mínimos desde un nodo "
         <<"a los demás. Eligirá las aristas que cumplan este propósito y "
         <<"las mostrará en la consola, de las cuales es posible construir "
-        <<"un arbol de distancias mínimas\n\n";
+        <<"un arbol de caminos de costo mínimo\n\n";
 
-    //n: nodos, m: aristas, d: dirigido, s: inicio, f: final
+    //n: nodos, m: aristas, d: dirigido, s: inicio
     int n,m,d,s;
     cout<<"Ingrese 1 si el grafo es dirigido o 0 si no es dirigido: ";
     cin>>d;
-    cout<<"Ingrese la cantidad de nodos que tiene el grafo: ";
+    cout<<"Ingresa la cantidad de nodos que tiene el grafo:";
     cin>>n;
-    cout<<"Ingrese la cantidad de aristas que hay en el grafo: ";
+    cout<<"Ingresa la cantidad de aristas que hay en el grafo:";
     cin>>m;
-    cout<<"Ingrese los nodos que estén conectados por una arista (ej. 1 4):\n";
+    cout<<"Ingrese el inicio y destino de cada arista, seguido por el peso (ejemplo: 1 4 2):\n";
 
-    vector<pair<int,long long>> adj[n+1]; 
+    //Vectores de adyacencias iniciados en base 1 (la etiqueta de los nodos serán mayores a 0)
+    vector<pair<int,long long>> adj[n+1]; //Lista de adyacencias <nodo, peso>
+
     for (long long i = 0; i<m; i++){
         static int x,y,z;
         cin>>x>>y>>z;
         adj[x].push_back({y,z});
+        if (!d) adj[y].push_back({x,z}); //Si no es dirigido, se hace otra una arista en sentido contrario
     }
     
     cout<<"Ingresa el nodo inicial:";
     cin>>s;
 
-    vector<long long> dis(n+1, -1);
-    set<array<long long, 3>> dijkstra;
-    vector<array<long long, 3>> edgs;
+    //Estructura de algoritmo Dijkstra usando set (funciona igual que al usar priority_queue)
+    vector<long long> ws(n+1, -1); //Pesos acumulados hacia todos los nodos, se usa -1 como estado no visitado
+    set<array<long long, 3>> dijkstra; //Set de arrays donde 0 = peso, 1 = nodo, 2 = padre
+    vector<array<long long, 3>> edgs; //Aristas resultantes, en forma de array, donde  0 = inicio, 1 = fin, 3 = peso
     dijkstra.insert({0,s,s});
 
     while (!dijkstra.empty()){
         auto x = *dijkstra.begin();
         dijkstra.erase(dijkstra.begin());
 
-        static long long w, v, p; //weight, node/vertex, parent
+        static long long w, v, p; //peso, nodo, padre
         w = x[0], v = x[1], p = x[2];
 
-        if (dis[v] != -1) continue;
-        dis[v] = w;
-        edgs.push_back({p, v, w - dis[p]});
+        if (ws[v] != -1) continue;
+        ws[v] = w;
+        edgs.push_back({p, v, w - ws[p]});
         for (auto y : adj[v])
             dijkstra.insert({w + y.second, y.first, v});
     }
 
+    //Imprime los resultados
     cout<<"\nMínimas distancias desde el nodo inicial:\n";
     for (int i = 1; i<=n; i++){
         cout<<"Hacia "<<i<<": ";
-        if (dis[i] < 0) cout<<"No hay camino"; else cout<<dis[i];
+        if (ws[i] < 0) cout<<"No hay camino"; else cout<<ws[i];
         cout<<endl;
     }
 
