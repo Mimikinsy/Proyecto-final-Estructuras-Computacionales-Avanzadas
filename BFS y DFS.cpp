@@ -36,7 +36,7 @@ int main(void)
     int n,m,d,s,f;
 
     cout<<"\nEste programa buscará un camino entre dos nodos \n"
-        <<"Si hay un camino, BFS devolverá la distancia y el camino óptimo hacia n\n"
+        <<"Si hay un camino, BFS devolverá la distancia y el camino óptimo hacia la meta\n"
         <<"Mientras que DFS devolverá un único camino, sea óptimo o no\n\n";
 
     cout<<"Ingrese 1 si el grafo es dirigido o 0 si no es dirigido: ";
