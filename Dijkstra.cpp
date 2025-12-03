@@ -44,8 +44,8 @@ int main(void)
     cin>>m;
     cout<<"Ingrese el inicio y destino de cada arista, seguido por el peso (ejemplo: 1 4 2):\n";
 
-    //Vectores de adyacencias iniciados en base 1 (la etiqueta de los nodos serán mayores a 0)
-    vector<pair<int,long long>> adj[n+1]; //Lista de adyacencias <nodo, peso>
+    //Vector de adyacencias iniciado en base 1 (la etiqueta de los nodos serán mayores a 0)
+    vector<pair<int,long long>> adj[n+1]; //formato: <nodo, peso>
 
     for (long long i = 0; i<m; i++){
         static int x,y,z;
