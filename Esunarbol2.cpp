@@ -1,12 +1,19 @@
-/*
-Es un arbol o no
-Este código verifica si la estructura dada cumple con una condición par ser un arbol, en este caso
-nos dira si es conexo o no, por lo que no importa si el arbol tiene peso o no.
-El código acepta el peso pero no sirve para nada.
-La complejidad total del algoritmo es O(n + m) porque la operación dominante es el DFS utilizado para
-detectar ciclos en el grafo. El resto de las operaciones tienen costos menores ( de O(n) o O(1)),
-por lo que no afectan la complejidad final. Como resultado nos da que el tiempo total del algoritmo está
-determindado por el recorrido profundo del grafo, lo que nos da una complejidad global de O(n + m).
+/*    
+    ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
+    Profesor Miguel Angel Meza de Luna
+
+    Inregrantes:
+        Anabel Romo Esparza
+        Ariadna Vargas Medina
+        Gaddiel Mohamed Pedroza Martínez
+        Stephanie Paola Pérez Ramírez
+
+    Propósito general:
+        El código muestra si un grafo cumple con una de las tres condiciones para ser un arbol. En este caso verifica si un grafo es
+        conexo o no.
+
+    Complejidad del codigo:
+        Opera en O(N+M) 
 */
 
 #include <iostream>
@@ -89,5 +96,6 @@ Output: El grafo es conexo, por lo tanto cumple una de las condiciones para ser 
 4 5 9
 5 3 2
 Output: El grafo no es un arbol ya que es disconexo.
+
 
 */
