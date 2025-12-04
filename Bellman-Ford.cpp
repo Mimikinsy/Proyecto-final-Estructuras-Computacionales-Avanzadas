@@ -1,4 +1,6 @@
 /*
+Bellman-Ford
+
     ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
     Profesor Miguel Angel Meza de Luna
 
@@ -155,4 +157,5 @@ int main() {
     Nodo 2: 2
 
 */
+
 
