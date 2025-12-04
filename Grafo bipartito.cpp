@@ -1,22 +1,5 @@
 /*
- Este código analiza si un grafo es bipartito o no, para saber si un grafo es bipartito se utiliza la
- tecnica del coloreado y un DFS para recorrer el grafo, es importante usar las dos ya que uno recorre 
- el grafo y el otro nos dice si el vecino y el nodo actual tienen diferente color, las únicas formas que 
- vimos este semestre para recorrer un grafo son DFS/BFS y no es posible ver si una arista esta uniendo 
- dos vertices del mismo conjunto sin el coloreo, por lo que hacer dos códigos que utilizen las tecnicas por separado no seria posible
- con los conocimientos adquiridos durante el curso. 
- ¿Por qué es inrrelevante el peso? Al recorrer un grafo con DFS y BFS el peso no tiene importancia
- entonces como la base de nuestro algoritmo es un DFS el peso no toma relevancia. Si puedes usar grafos
- con peso para saber si son bipartito o no, pero solo para tareas muy especificas como buscar el emparejamiento
- máximo ponderado, en flujos en redes bipartitas o problemas de optimización, pero en un algoritmo que lo único 
- que busca es saber si es o no un grafo bipartito el peso es algo que pasa desapercibido.
- Complejidad:
- La complejidad de este algoritmo es O(n+m) donde n representa el número de vertices y m el número de aristas. 
- Como podemos observar, esta tambien es la complejidad del DFS, esto es porque es la operación más compleja.
- O(n+m) hace referencia a que cada n (vertice) sera visitado una vez y cada m (arista) se recorre una vez en 
- cada dirección de la lista de adyacencia.
-
-
+Grafos Bipartitos
  
  ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
     Profesor Miguel Angel Meza de Luna
@@ -28,13 +11,22 @@
         Stephanie Paola Pérez Ramírez
 
     Propósito general:
-        El código ayuda a encontrar el camino mas corto en grafos ponderados, pueden tener pesos negativos. 
+        Este código te muestra si un grafo es bipartito o no, basandose en el método del coloreo y DFS.
 
     Complejidad del codigo:
         Opera en O(N+M) 
 
 	Nota:
-		No esta diseñado para grafos no dirigidos porque el mismo algoritmo es para grafos dirigidos. 
+		Los grafos bipartitos estan definidos como grafos no dirigidos y pero tambien se puede verificar si un grafo dirigido
+		es bipartitoo no, lo que no hace el código es aceptar grafos con peso y esto es debido al DFS ya que el no acepta peso 
+		y es la base de este algoritmo, aparte para saber si un grafo ponderado es bipartito o no se necesitan de algoritmos 
+		mas complejos.
+
+	Impoertante:
+		En este tema es solo un algoritmo porque las dos opciones que se dieron en el word son las dos partes funcamentales que 
+		se necesitan para el algoritmo, es decir, no puedo sabe si un grafo es bipartito solo por el DFS ya que necesito algo 
+		para marcar que la ninguno de sus vecinos sea del mismo conjunto o no puedo usar el coloreo sin una forma de recorrer
+		el grafo. 
 */
 
 #include <iostream>
@@ -62,11 +54,13 @@ void dfs(int nodo, int colorActual) {
 }
 
 int main() {
-    int n, m;
+    int n, m, diri;
     cout << "Numero de nodos: ";
     cin >> n;
     cout << "Numero de aristas: ";
     cin >> m;
+    cout << "¿El grafo es dirigido? (1 = sí, 0 = no): ";
+    cin >> diri;
 
     grafo.assign(n, {});
     color.assign(n, 0);
@@ -77,7 +71,9 @@ int main() {
         cin >> u >> v;
         u--; v--; // para que todo empiece en 0 y no en 1
         grafo[u].push_back(v);
-        grafo[v].push_back(u); 
+        if (diri==0) {
+            grafo[v].push_back(u); // si no es dirigido, añadimos la arista inversa
+        }
     }
 
     // Se realiza DFS desde cada nodo no visitado por si el grafo es disconexo
@@ -99,6 +95,7 @@ int main() {
 
     4
     4
+    0
     1 3
     1 4
     2 3
@@ -107,6 +104,7 @@ int main() {
 
     3
     3
+    0
     1 2
     2 3
     3 1
@@ -114,6 +112,7 @@ int main() {
 
     5
     4
+    0
     1 2
     2 3
     3 4
@@ -122,6 +121,7 @@ int main() {
 
     4
     5
+    0
     1 2
     2 3
     3 4
@@ -129,6 +129,22 @@ int main() {
     2 4
     Outpud: El grafo NO es bipartito :(
 
+    4
+    4
+    1
+    1 3
+    1 4
+    2 3
+    2 4
+    Outpud: El grafo es bipartito :)
 
+    3
+    3
+    1
+    1 2
+    2 3
+    3 1
+    Output: El grafo NO es bipartito :(
 */
+
 
