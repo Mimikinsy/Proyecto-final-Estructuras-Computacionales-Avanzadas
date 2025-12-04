@@ -192,6 +192,62 @@ int main() {
     return 0;
 }
 
+/*
+Input
+4
+3
+1 2
+2 3
+3 4
+Output
+Tiene Pareo perfecto
+
+Input
+6 
+7
+1 2
+1 3
+1 4
+4 5
+6 7
+7 3
+7 4
+Output
+Tiene Pareo perfecto
+
+Input
+6
+6
+1 2
+2 3
+3 1   
+4 5
+5 6
+6 4   
+Output
+Tiene Pareo perfecto
+
+Input
+4
+2
+1 2
+2 3
+Output
+No tiene pareo perfecto
+
+8
+6
+1 2
+2 3
+3 1    
+4 5
+6 7
+7 8
+Output
+No tiene pareo perfecto
+
+
+*/
 
 
 
