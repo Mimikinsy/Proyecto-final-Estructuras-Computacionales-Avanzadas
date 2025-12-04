@@ -1,16 +1,21 @@
 /*
-Bellman-Ford para encontrar el camino mas corto
-Bellman Ford funciona con pesos negativos pero no con ciclos negativos, su complejidad es O(V*E),
-donde V es el número de vértices y E el número de aristas del grafo. Esto se debe a que en cada
-una de las V-1 iteraciones se recorren todas las aristas para intentar mejorar la distancia conocida
-de un nodo usando otra ruta más corta (O(V*E)),y posteriormente se hace una pasada adicional sobre todas las
-aristas para verificar la existencia de ciclos negativos (O(E)). Esto se simplifica a O(V*E) ya que es 
-la operación dominante.
-¿Por qué no esta hecho para grafos no dirigidos? Porque Bellman-Ford es un algoritmo diseñado para grafos 
-dirigidos y aunque es posible hacerlo con grafos no dirigidos transformando cada arista no dirigida en 
-dos dirigidas, lo que nos trae un problema cuando los pesos son negativos ya que va a detectar un ciclo 
-negativo y dara falsos resultados, si no tiene peso negativo es mucho mas lento y la opcion menos recomendable
-para buscar el camino mas corto. 
+    ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
+    Profesor Miguel Angel Meza de Luna
+
+    Inregrantes:
+        Anabel Romo Esparza
+        Ariadna Vargas Medina
+        Gaddiel Mohamed Pedroza Martínez
+        Stephanie Paola Pérez Ramírez
+
+    Propósito general:
+        El código ayuda a encontrar el camino mas corto en grafos ponderados, pueden tener pesos negativos. 
+
+    Complejidad del codigo:
+        Opera en O(N+M) 
+
+	Importante:
+		No esta diseñado para grafos no dirigidos porque el mismo algoritmo es para grafos dirigidos. 
 
 */
 
@@ -148,4 +153,5 @@ int main() {
     Nodo 0: 0
     Nodo 1: 4
     Nodo 2: 2
+
 */
