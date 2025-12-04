@@ -15,6 +15,26 @@
  Como podemos observar, esta tambien es la complejidad del DFS, esto es porque es la operación más compleja.
  O(n+m) hace referencia a que cada n (vertice) sera visitado una vez y cada m (arista) se recorre una vez en 
  cada dirección de la lista de adyacencia.
+
+
+ 
+ ESTRUCTURAS COMPUTACIONALES AVANZADAS (3 - A)
+    Profesor Miguel Angel Meza de Luna
+
+    Inregrantes:
+        Anabel Romo Esparza
+        Ariadna Vargas Medina
+        Gaddiel Mohamed Pedroza Martínez
+        Stephanie Paola Pérez Ramírez
+
+    Propósito general:
+        El código ayuda a encontrar el camino mas corto en grafos ponderados, pueden tener pesos negativos. 
+
+    Complejidad del codigo:
+        Opera en O(N+M) 
+
+	Nota:
+		No esta diseñado para grafos no dirigidos porque el mismo algoritmo es para grafos dirigidos. 
 */
 
 #include <iostream>
@@ -111,3 +131,4 @@ int main() {
 
 
 */
+
