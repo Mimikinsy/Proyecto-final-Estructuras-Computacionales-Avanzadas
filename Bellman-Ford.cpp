@@ -12,9 +12,9 @@
         El código ayuda a encontrar el camino mas corto en grafos ponderados, pueden tener pesos negativos. 
 
     Complejidad del codigo:
-        Opera en O(N+M) 
+        Opera en O(V*E) 
 
-	Importante:
+	Nota:
 		No esta diseñado para grafos no dirigidos porque el mismo algoritmo es para grafos dirigidos. 
 
 */
@@ -155,3 +155,4 @@ int main() {
     Nodo 2: 2
 
 */
+
